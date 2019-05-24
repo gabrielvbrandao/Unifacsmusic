@@ -89,4 +89,8 @@ public class No <Artista extends Comparable<Artista>>{
         }
         return antecessor;
     }   
+    
+    public String toString(){
+        return this.artista.toString();
+    }
 }
