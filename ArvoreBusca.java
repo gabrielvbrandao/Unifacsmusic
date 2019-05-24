@@ -22,35 +22,35 @@ public class ArvoreBusca <Artista extends Comparable<Artista>>{
         this.raiz = raiz;
     }
     
-    public No inserir(No no, No pai){
+    public No inserir(No novo, No pai){
         if(pai == null){
             pai = raiz;
         }
         
         if(raiz == null){
-            raiz = no;
+            raiz = novo;
         }
         
         else{
-            if(no.obterValor().CompareTo(pai.obterValor()) == 0){
+            if(novo.obterArtista().compareTo(pai.obterArtista()) == 0){
                 if(pai.obterNoEsquerda() == null){
-                    pai.inserirEsquerda(no);
+                    pai.inserirEsquerda(novo);
                 }
                 else{
-                    inserir(no, pai.obterNoEsquerda());
+                    inserir(novo, pai.obterNoEsquerda());
                 }
             } 
             
             else {
                 if(pai.obterNoDireita() == null){
-                    pai.inserirDireita(no);
+                    pai.inserirDireita(novo);
                 }
                 else{
-                    inserir(no, pai.obterNoDireita());
+                    inserir(novo, pai.obterNoDireita());
                 }
             }            
         }
-        return no;
+        return novo;
     }
     
     public No inserir(Artista artista){
@@ -58,14 +58,14 @@ public class ArvoreBusca <Artista extends Comparable<Artista>>{
         return inserir(a, null);
     }
     
-    public No remover(No novo, Artista artista){
+    public No remover(Artista artista, No novo){
         No p = null;
         
         if(novo == null){
             novo = raiz;
         }
         
-        if(artista.obterValor().compareTo(artista) == 0 ){
+        if(novo.obterArtista().compareTo(artista) == 0 ){
             if((novo.obterNoDireita() == null) && (novo.obterNoEsquerda() == null)){
                 if(novo == this.raiz){
                     this.raiz = null;
@@ -110,7 +110,7 @@ public class ArvoreBusca <Artista extends Comparable<Artista>>{
             
             else{
                 No sucessor = this.getSucessor(novo, true);
-                System.out.println("A roxima musica é: " + sucessor + "");
+                System.out.println("A proxima musica é: " + sucessor + "");
                 
                 if(sucessor != novo.obterNoDireita()){
                     sucessor.pai.inserirEsquerda(sucessor.getDireita());
@@ -121,7 +121,7 @@ public class ArvoreBusca <Artista extends Comparable<Artista>>{
                     raiz = sucessor;
                 }
                 
-                else if(novo = novo.pai.obterNoDireita()){
+                else if(novo == novo.pai.obterNoDireita()){
                     novo.pai.inserirDireita(sucessor);
                 }
                 
@@ -132,18 +132,18 @@ public class ArvoreBusca <Artista extends Comparable<Artista>>{
                 sucessor.inserirEsquerda(novo.obterNoEsquerda());
             }
         }
-        else if(novo.obterValor().compareTo(artista) == -1){
+        else if(novo.obterArtista().compareTo(artista) == -1){
             remover(artista, novo.obterNoDireita());
         }
         
         else{
             remover(artista, novo.obterNoEsquerda());
         }
-        
+        return null;
     }    
     
     public No remover(Artista artista){
-        return remover(artista, null);
+        return remover(null, (No) artista);
     }
     
     public String imprimeSubArvoreIn(No no){
