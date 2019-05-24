@@ -166,6 +166,24 @@ public class ArvoreBusca <Artista extends Comparable<Artista>>{
         return this.aiz();
     }*/
     
+    public No getSucessor(No atual, Boolean primeiro){
+        No sucessor = null;
+        
+        if(primeiro){
+            sucessor = atual.obterNoDireita();
+        }
+        
+        else{
+            sucessor = atual;
+        }
+        
+        if(sucessor.obterNoEsquerda() != null){
+            return getSucessor(sucessor.obterNoEsquerda(), false);
+        }
+        
+        return sucessor;
+    }
+    
     public No busca(Artista artista){
         No p = this.raiz;
         while(p != null){
