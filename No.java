@@ -93,4 +93,20 @@ public class No <Artista extends Comparable<Artista>>{
     public String toString(){
         return this.artista.toString();
     }
+    
+    public void inserirArtista(Artista artista) {
+		this.artista = artista;
+    }
+    
+    public Artista obterArtista(){
+		return this.artista;
+    }
+    
+    public void inserirPai(No pai) {
+		this.pai = pai;
+    }
+    
+    public No obterPai() {
+		return this.pai;
+    }
 }
