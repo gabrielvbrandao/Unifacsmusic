@@ -1,0 +1,62 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
+public class Mp3{
+    
+    private JFrame janela;
+    
+    private void preparaJanela() {
+        janela = new JFrame("Spotify");
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
+    
+    private void mostraJanela() {
+        janela.pack();
+        janela.setSize(540, 540);
+        janela.setVisible(true);
+    }
+
+    public static void main(String[] args){
+        newMp3().montatela();
+    }
+    
+    private void montatela(){
+        preparaJanela();
+        preparaPainelPrincipal();
+        preparaBotaoPesquisar();
+        preparaBotaoSair();
+        mostraJanela();
+    }
+    
+    private void preparaPainelPrincipal() {
+        painelPrincipal = new JPanel();
+        janela.add(painelPrincipal);
+    }
+    
+    private void preparaBotaoPesquisar() {
+        JButton botaoPesquisar = new JButton("Pesquisar Artista");
+        botaoPesquisar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new EscolhedorDeXML().escolhe();
+            }
+        });
+        painelPrincipal.add(botaoPesquisar);
+    }
+    
+    private void preparaBotaoMostrarAlbum() {
+        JButton botaoMostrarAlbum = new JButton("Albuns");
+        botaoSair.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+        painelPrincipal.add(botaoMostrarAlbum);
+    }
+}
