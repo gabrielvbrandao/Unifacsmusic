@@ -1,0 +1,54 @@
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.JLabel;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
+public class CaixaDeTexto extends JFrame{
+    private JTextField usuario;
+    private JPasswordField senha;
+    private JButton login, limpa;
+    private JLabel user, pass;
+ 
+    public CaixaDeTexto(){
+        super("Pesquisar, mostrar Java");
+        setLayout(new FlowLayout());
+  
+        artista = new JLabel("Artista: ");
+        add(artista);
+  
+        artista1 = new JTextField(50);
+        add(artista1);
+ 
+        pesquisar = new JButton("Pesquisar");
+        pesquisar.addActionListener(new ActionListener() {
+        
+        public void actionPerformed(ActionEvent evento){
+            if(evento.getSource() == pesquisar)
+                if(artista1.getText().equals("Java"))
+                    JOptionPane.showMessageDialog(null, "Parabéns, você entrou na Matrix!");
+                else
+                    JOptionPane.showMessageDialog(null, "Senha errada! Estude Java!");
+    
+        }
+   }
+  );
+  add(login);
+  
+  limpa = new JButton("Limpar");
+  limpa.addActionListener(new ActionListener() {
+   public void actionPerformed(ActionEvent evento){
+    if(evento.getSource() == limpa){
+     usuario.setText("");
+     senha.setText("");
+    }
+   }
+   }
+  );
+  add(limpa);
+ }
+}
